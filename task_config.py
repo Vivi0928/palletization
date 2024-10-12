@@ -1,0 +1,42 @@
+from helpers.material import *
+
+class TaskConfig:
+    class train:
+        exp_id = '1'
+        mask_type = 'heuri'
+        seed = 2024
+        resume_path = None
+        CUDA_VISIBLE_DEVICES = '0, 1'
+        n_envs = 32
+        n_gen = 30
+        learning_rate=0.0003
+        n_steps = 512
+        batch_size = 256 
+        gamma = 1.
+        use_sde = True
+        total_timesteps=4000000
+
+    class box:
+        n_properties = 4
+        type_dict = {
+            1: {"size":(0.03, 0.03, 0.02), "friction":(1.0, 0.005, 0.0001), "density":100, "softness": 3, "count": 10, "material":lightwood},
+            2: {"size":(0.03, 0.03, 0.03), "friction":(1.0, 0.005, 0.0001), "density":100, "softness": 3, "count": 10, "material":lightwood},
+            3: {"size":(0.03, 0.03, 0.03), "friction":(1.0, 0.005, 0.0001), "density":5000, "softness": 0.5, "count": 10, "material":darkwood},
+            4: {"size":(0.04, 0.03, 0.03), "friction":(1.0, 0.005, 0.0001), "density":5000, "softness": 0.5, "count": 10, "material":darkwood},
+        }
+        # 48 * 10 + 64 * 10 + 27 * 5 + 48 * 10 + 64 * 10
+        n_type = len(type_dict)
+    
+    class table:
+        full_size = (1., 2., 0.05)
+        friction = (1.8, 2., 0.05)
+        offset = (0, 0, 0.8)
+    
+    class pallet:
+        size = (0.25, 0.25, 0.02)
+        max_pallet_height = 20
+        relative_table_displacement = (0, 0.4, 0.01)
+        material=redwood
+    
+    buffer_size = 5
+    bin_size = 0.01 # use 1cm as bin size to discrete the space
