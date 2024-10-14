@@ -2,7 +2,7 @@
 
 <img src=".\assets\overview.png" alt="overview" style="zoom:75%;" />
 
-![test_policy_OL_mask](C:\Users\ztq20\Desktop\code\assets\test_policy_OL_mask.gif)
+![test_policy_OL_mask](.\assets\test_policy_OL_mask.gif)
 
 
 
