@@ -1,8 +1,8 @@
 # Physics-Aware Robotic Palletization with Online Masking Inference
 
-<img src=".\assets\overview.png" alt="overview" style="zoom:75%;" />
+<img src="./assets/overview.png" alt="overview" style="zoom:75%;" />
 
-![test_policy_OL_mask](.\assets\test_policy_OL_mask.gif)
+![test_policy_OL_mask](./assets/test_policy_OL_mask.gif)
 
 
 
