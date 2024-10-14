@@ -7,17 +7,13 @@ from robosuite.utils.transform_utils import convert_quat
 from robosuite import load_controller_config
 import robosuite.utils.transform_utils as T
 from scipy.special import softmax
-import imageio
 import gymnasium as gym
 from gymnasium import spaces
-import os
 import numpy as np
-import random
-import copy, torch
+import imageio, sys, copy, torch, random, argparse
 
 from task_config import TaskConfig
 from helpers.utils import Heuri
-import sys
 
 sys.path.append("Unet3D")
 import Unet3D.model
@@ -537,7 +533,13 @@ class BoxPlanningEnvWrapper(gym.Env):
     #     self.env.std = torch.from_numpy(copy.deepcopy(std)).to(self.env.device)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--save_box_pose', type=bool, default=False, help='Save box pose as init pose or not')
+    args = parser.parse_args()
+
     env = BoxPlanning(save_video_path="video/init_pose.mp4", mask_type=None, nn_mask_path=None, init_box_pose_path=None)
     env.reset()
     env.sim_forward_per_frame(20)
-    env.save_box_pose("./helpers/box_init_pose.npy")
+
+    if args.save_box_pose is True:
+        env.save_box_pose("./helpers/box_init_pose.npy")
